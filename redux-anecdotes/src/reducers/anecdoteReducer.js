@@ -29,7 +29,7 @@ const reducer = (state = initialState, action) => {
 
         newState.sort((a, b) => b.votes - a.votes);
         return newState;
-        
+
     case 'NEW_ANECDOTE':
       return state.concat(action.data)
     default:
@@ -37,5 +37,20 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export { asObject };
+const createAnecdote = (content) => {
+  return {
+    type: 'NEW_ANECDOTE', 
+    data: asObject(content)
+  };
+};
+
+const vote = (id) => {
+  console.log('vote', id)
+  return {
+    type: 'VOTE',
+    data: { id }
+  };
+};
+
+export { createAnecdote, vote };
 export default reducer;
