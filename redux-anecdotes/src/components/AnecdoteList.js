@@ -1,13 +1,13 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { vote } from '../reducers/anecdoteReducer';
+import { voteAnecdote } from '../reducers/anecdoteReducer';
 import { setMessage } from '../reducers/notificationReducer';
 
  const Anecdote = ({ anecdote }) => {
     const dispatch = useDispatch();
 
     const handleVote = (anecdote) => {
-        dispatch(vote(anecdote.id));
+        dispatch(voteAnecdote(anecdote));
         dispatch(setMessage(`you liked '${anecdote.content}'`));
         setTimeout(() => {
             dispatch(setMessage(null));
